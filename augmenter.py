@@ -4,6 +4,7 @@ import random
 import cv2
 import numpy as np
 from tqdm import tqdm
+import os, os.path
 
 
 BOX_COLOR = (255, 0, 0) # Red
@@ -146,10 +147,17 @@ if __name__ == '__main__':
     classes = openClassList()
 
     transforms = makeTransforms()
-
-    writeImgNum = 1232
-    for i in tqdm(range(1232)):
-        img = cv2.imread('./images/%d.jpg' % (i))
+    
+    try:
+        if sys.argv[1] == '--count':
+            writeImgNum = int(sys.argv[2])
+        else:
+            print('Enter the number of images.')
+    except:
+        print('Enter the number of images.')
+    
+    for i in tqdm(range(writeImgNum)):
+        img = cv2.imread('./input/%d.jpg' % (i))
 
         if img is None: continue
 
