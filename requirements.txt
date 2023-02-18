@@ -1,0 +1,5 @@
+albumentations
+matplotlib
+opencv-python
+numpy
+tqdm
